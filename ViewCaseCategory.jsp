@@ -1,6 +1,6 @@
 <%-- 
-    Document   : ViewPetitioners
-    Created on : 10 Feb, 2018, 10:24:46 PM
+    Document   : ViewCaseCategory
+    Created on : 10 Feb, 2018, 11:08:15 PM
     Author     : acer
 --%>
 
@@ -12,6 +12,6 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>IPC DIRECTORY</h1>
     </body>
 </html>
