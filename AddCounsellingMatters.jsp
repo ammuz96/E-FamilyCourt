@@ -132,7 +132,7 @@
                 <th>Date</th>
            <th>Time</th>
            <th>Petitioner Name</th>
-           <th>Advocate Name</th>
+           <th>Respondent Name</th>
     
                       
 
@@ -142,7 +142,7 @@
             
            String CID="";
            int i=1;
-            String selQry="select * from tbl_counselling c inner join tbl_petitioner p inner join tbl_advocate a inner join tbl_councillor r on p.pet_id=c.pet_id and c.adv_id=a.adv_id and r.cou_id=c.cou_id where c.cou_id='"+session.getAttribute("couid")+"'";
+            String selQry="select * from tbl_counselling c inner join tbl_petitioner p inner join tbl_petition a inner join tbl_councillor r on p.pet_id=c.pet_id and p.pet_id=a.pet_id and r.cou_id=c.cou_id where c.cou_id='"+session.getAttribute("couid")+"'";
             ResultSet rs1=obj.selectData(selQry);
             while(rs1.next())
             {
@@ -155,7 +155,7 @@
                    <td><%=rs1.getString("couns_time")%></td>
                     <td><%=rs1.getString("pet_name")%></td>
 
-                   <td><%=rs1.getString("adv_name")%></td>
+                   <td><%=rs1.getString("respondent_name")%></td>
 
               
          
