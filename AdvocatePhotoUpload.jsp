@@ -31,7 +31,7 @@
 String file_name="";
 
 File savedFile=null;
-String fn="",pf="";
+String fn="",pf="",fnn="";
 
 String field[] = new String[20];
 String value[]=new String[20];
@@ -112,6 +112,32 @@ if(isMultipart)
             }
            
            
+          if(field_name.equals("txt_proof"))
+           {
+           String ext=file_name.substring(file_name.lastIndexOf("."));
+            //setting path to store image
+            File proj_path=new File(config.getServletContext().getRealPath("/"));
+            String file_path=proj_path.getParentFile().getParentFile().getPath()+"\\web\\Advocate\\Proof\\";
+            Random r=new Random();
+             int r_num=r.nextInt(1111)+999;
+            
+            fnn="AdvocateProof_"+r_num+ext;
+            //creating a file object
+            savedFile=new File(file_path+fnn);
+            try
+            {
+                //writing the file object
+                f_item.write(savedFile);               
+                
+            }
+            catch(Exception ex)
+            {
+                out.println(ex);
+            }
+            }
+           
+           
+           
           
            
        }
@@ -133,7 +159,7 @@ if(isMultipart)
                          {
                              logid=rs4.getString("login");
                          }
-  String str1="insert into tbl_advocate(adv_name,adv_adrs,dist_id,adv_email,adv_cno,adv_photo,adv_fee,adv_age,adv_exp,adv_qua,court_id,case_id,login_id)values('"+value[1]+"','"+value[2]+"','"+value[3]+"','"+value[4]+"','"+value[5]+"','"+fn+"','"+value[6]+"','"+value[7]+"','"+value[8]+"','"+value[9]+"','"+value[10]+"','"+value[11]+"','"+logid+"')";
+  String str1="insert into tbl_advocate(adv_name,adv_adrs,dist_id,adv_email,adv_cno,adv_photo,adv_proof,adv_fee,adv_age,adv_exp,adv_qua,court_id,case_id,login_id,adv_status)values('"+value[1]+"','"+value[2]+"','"+value[3]+"','"+value[4]+"','"+value[5]+"','"+fn+"','"+value[6]+"','"+value[7]+"','"+value[8]+"','"+value[9]+"','"+value[10]+"','"+value[11]+"','"+fnn+"','"+logid+"',2)";
    System.out.println(str1);
    out.println(str1);
    
@@ -144,7 +170,7 @@ if(isMultipart)
       %> 
        <script type="text/javascript">
             alert("Registered Successfully..");
-            setTimeout(function(){window.location.href='AddAdvocate.jsp'},100);
+            setTimeout(function(){window.location.href='AdvocateRegistration.jsp'},100);
         </script>
      <%
     }
